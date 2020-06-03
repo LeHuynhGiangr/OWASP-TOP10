@@ -1,0 +1,36 @@
+﻿{
+  "version": "1.0",
+  "defaultProvider": "filesystem",
+  "libraries": [
+    {
+      "library": "node_modules/bootstrap/dist/css/",
+      "files": [
+        "bootstrap.css"
+      ],
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "node_modules/font-awesome/css/",
+      "files": [
+        "font-awesome.min.css"
+      ],
+      "destination": "wwwroot/lib/font-awesome"
+    },
+
+
+    {
+      "library": "node_modules/bootstrap/dist/js/",
+      "files": [
+        "bootstrap.min.js"
+      ],
+      "destination": "wwwroot/lib/bootstrap"
+    },
+    {
+      "library": "node_modules/jquery/dist/",
+      "files": [
+        "jquery.min.js"
+      ],
+      "destination": "wwwroot/lib/jquery"
+    }
+  ]
+}
