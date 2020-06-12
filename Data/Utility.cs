@@ -7,15 +7,24 @@ using System.Data.SqlClient;
 
 namespace Data
 {
-    class Utility
+    public class Utility
     {
-        private const string _connectionString = @"Data Source=<hostName>\<instanceName>; Initial Catalog=; User ID=; Password=";
+        //Data Source=MYPC;User ID=sa;Password=********;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False
+        private const string _connectionString = @"Data Source=MYPC; Initial Catalog=warehouse; User ID=sa; Password=p@ssw0rd";
         private static SqlConnection _sqlConnection = new SqlConnection { ConnectionString = _connectionString };
 
         //using command with parameters
         public static SqlDataReader Query(SqlCommand _command)
         {
-             return UseConnection(_command, _ => _.ExecuteReader()) as SqlDataReader;
+            try
+            {
+                return UseConnection(_command, _ => _.ExecuteReader(System.Data.CommandBehavior.CloseConnection)) as SqlDataReader;
+            }
+            catch(SqlException e)
+            {
+                return null;
+            }
+            
             
         }
 
@@ -27,12 +36,12 @@ namespace Data
 
         private static object UseConnection(SqlCommand _sqlCommand, Func<SqlCommand, object> _execute)
         {
-            
-            if (OpenConnection())
+            OpenConnection();
+            if (_sqlConnection.State==System.Data.ConnectionState.Open)
             {
                 _sqlCommand.Connection = _sqlConnection;
                 var _result = _execute(_sqlCommand);
-                CloseConnection();
+                //CloseConnection();
                 return _result;
             }
             return null;
@@ -59,7 +68,7 @@ namespace Data
                 }
             return false;
         }
-        private static bool CloseConnection()
+        public static bool CloseConnection()
         {
             if (_sqlConnection.State == System.Data.ConnectionState.Open)
                 try

@@ -1,0 +1,8 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+    Layout = "~/Views/XSS/XSSShared/_XSSLayout.cshtml";
+}
+
+<h2>Search Results for "@Html.Raw(Context.Request.Query["content"])"</h2>
+

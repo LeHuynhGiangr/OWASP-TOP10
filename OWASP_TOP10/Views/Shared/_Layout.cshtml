@@ -14,7 +14,9 @@
     @*<link rel="stylesheet" href="css/style.css">*@
     <link href="~/css/style.css" rel="stylesheet" />
 
+    <style>
     @RenderSection("style", required: false)
+    </style>
 
 </head>
 <body>
@@ -35,7 +37,7 @@
                     <a href="/sqlinjection"><span class="fa fa-user mr-3"></span> Sql Injection</a>
                 </li>
                 <li @RenderSection("xss", required: false)>
-                    <a href="#"><span class="fa fa-sticky-note mr-3"></span> XSS</a>
+                    <a href="/xss"><span class="fa fa-sticky-note mr-3"></span> XSS</a>
                 </li>
                 <li @RenderSection("#", required: false)>
                     <a href="#"><span class="fa fa-sticky-note mr-3"></span> #</a>

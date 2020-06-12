@@ -2,19 +2,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@section sqlinjection{
+@section xss{
     class="active"
+}
+
+@section style{
+    hr.new5 {
+    border: 10px solid 	cornflowerblue;
+    border-radius: 3px;
+    }
 }
 
 @*<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>*@
 
-<h1>Search for product</h1>
-<form action="/sqlinjection/search" method="get">
-    <label for="category">Enter Category Name: </label>
-    <input type="text" name="category" />
+<h1>Search for fun</h1>
+<form action="/xss/search" method="get">
+    <label for="category">Enter arbitrary content: </label>
+    <input type="text" name="content" />
     <input type="submit" name="search" value="Search" />
 </form>
-
+<hr class="new5">
 @RenderBody()
-
